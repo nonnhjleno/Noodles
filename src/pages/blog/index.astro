@@ -8,14 +8,23 @@ import { getCollection } from "astro:content";
 
 const allPosts = await getCollection('blog');
 
+const publishedPosts = allPosts.filter((content) => content.data.isPublished);
+
+const sortedPosts = publishedPosts.sort((a, b) => {
+  const aDate = new Date(a.data.pubDate);
+  const bDate = new Date(b.data.pubDate);
+  return bDate.getTime() - aDate.getTime();
+});
+
 const pageTitle = "記事一覧";
+
 ---
 
 <BaseLayout pageTitle={pageTitle}>
 	<ul id="posts">
 		{
-			allPosts.map((content) => (
-				<BlogPost content={content} url={content.slug} title={content.data.title} thumbnail={content.data.thumbnail} />
+			publishedPosts.map((content) => (
+				<BlogPost content={content}/>
 			))
 		}
 	</ul>
