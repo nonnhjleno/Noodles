@@ -23,7 +23,7 @@ const pageTitle = "記事一覧";
 <BaseLayout pageTitle={pageTitle}>
 	<ul id="posts">
 		{
-			publishedPosts.map((content) => (
+			sortedPosts.map((content) => (
 				<BlogPost content={content}/>
 			))
 		}
