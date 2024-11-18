@@ -1,0 +1,34 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+const pageTitle = "404";
+---
+
+<BaseLayout pageTitle={pageTitle}>
+  <style>
+    #error-page-content {
+      width: 50%;
+      margin: 100px auto;
+    }
+    h1 {
+      font-size: medium;
+    }
+  </style>
+  <div id="error-page-content">
+    <h1>404 Not Found</h1>
+    <p>このページは存在しません。</p>
+    <img id="img" src="" alt="" />
+  </div>
+  <script is:inline>
+    const callApi = async () => {
+      fetch("https://api.thecatapi.com/v1/images/search", {
+        method: "GET",
+      })
+        .then((res) => res.json())
+        .then((data) => {
+          document.getElementById("img").src = data[0].url;
+        });
+    };
+
+    callApi();
+  </script>
+</BaseLayout>

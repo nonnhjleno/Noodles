@@ -1,0 +1,68 @@
+---
+import "../styles/global.css";
+
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+import Links from "../components/Links.astro";
+
+import { Image } from "astro:assets";
+
+import ChartImage from "../images/chart_20241106.png"
+
+const pageTitle = "誰の何について？？？";
+
+const skills = [
+  "JavaScript",
+  "React",
+  "Astro",
+  "PHP",
+  "Laravel",
+  "WordPress",
+  "C#(すこーし)",
+];
+
+const happy = true;
+const finished = true;
+const goal = 3;
+
+const skillColor = "navy";
+const fontWeight = "bold";
+const textCase = "uppercase";
+---
+
+<BaseLayout pageTitle={pageTitle}>
+  <style>
+    h2{
+      font-size: large;
+    }
+  </style>
+  <div class="who">
+    <h2>何者なんだい！！</h2>
+    <p>またきまです。ここにいます。↓</p>
+    <Links status="about"/>
+    <p>情報系の学部でパソコンをパチパチしたり、軽音系のサークルでギターをパチパチしてます。</p>
+  </div>
+  
+  <div class="hoby">
+    <h2>してること</h2>
+    <ul>
+      <li>ギター（すこーし）</li>
+      <li>プログラミング（このブログくらいなら）</li>
+      <li>音楽鑑賞（ロックが好き）</li>
+    </ul>
+  </div>
+
+  <div class="pl">
+    <h2>プログラミング</h2>
+    <p>自信を持ってできると言えるもんなんてない</p>
+    <ul>
+      {skills.map((skill) => <li class="skill">{skill}</li>)}
+    </ul>
+  </div>
+
+  <div class="mytopstar">
+    <h2>音癖</h2>
+    <Image src={ChartImage} alt="The Album Chart" width={700}/>
+  </div>
+
+</BaseLayout>

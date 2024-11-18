@@ -1,0 +1,35 @@
+---
+import BaseLayout from "./BaseLayout.astro";
+import "../styles/markdown.css";
+import { Image } from "astro:assets";
+const { entry } = Astro.props;
+const data = entry.data;
+const formattedDate = entry.data.pubDate.toLocaleString("ja-JP", {
+  year: "numeric",
+  month: "2-digit",
+  day: "2-digit",
+  timeZone: "Asia/Tokyo",
+});
+---
+
+<BaseLayout pageTitle={data.title}>
+  <p>投稿日:{formattedDate}</p>
+  {data.lastDate && <p>最終投稿日: {data.lastDate.toString().slice(0, 10)}</p>}
+  <p style="color: rgb(97, 97, 97);"><em>{data.description}</em></p>
+  <p>著者: {data.author}</p>
+  <Image src={data.thumbnail.url} width="1080" alt={data.thumbnail.alt} />
+  <ul class="tags">
+    {
+      data.tags.map((tag) => (
+        <li class="tag">
+          <a href={`/tags/${tag}`}>{tag}</a>
+        </li>
+      ))
+    }
+  </ul>
+  {data.map && <div class="map" set:html={data.map} />}
+  <slot />
+  <script>
+    import "../scripts/markdown.js";
+  </script>
+</BaseLayout>

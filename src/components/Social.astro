@@ -1,0 +1,23 @@
+---
+const { platform, username, section } = Astro.props;
+
+let displayPlatform = platform;
+
+let href = `https://www.${platform}.com/${username}`;
+
+if (platform.toLowerCase() === "bluesky") {
+  href = `https://bsky.app/profile/${username}.bsky.social`;
+} else if (platform.toLowerCase() === "x") {
+  displayPlatform = "𝕏";
+} else if (platform.toLowerCase() === "last.fm") {
+  href = `https://www.last.fm/user/${username}`;
+} else if (platform.toLowerCase() === "rateyourmusic") {
+  href = `https://www.rateyourmusic.com/~${username}`;
+}
+
+const linkClass = section === "footer" ? "footer-link" : "about-link";
+---
+
+<a href={href} class={linkClass} target="_blank" rel="noopener"
+  >{displayPlatform}</a
+>

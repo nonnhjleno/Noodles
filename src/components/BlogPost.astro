@@ -1,0 +1,24 @@
+---
+import Image from "astro/components/Image.astro";
+
+const { content } = Astro.props;
+const formattedDate = content.data.pubDate.toLocaleString("ja-JP", {
+  year: "numeric",
+  month: "2-digit",
+  day: "2-digit",
+  timeZone: "Asia/Tokyo",
+});
+
+---
+
+<li>
+  <a href={content.slug}>
+    <Image src={content.data.thumbnail.url} alt={content.data.thumbnail.alt} />
+    <div class="post-detail">
+      <h2>{content.data.title}</h2>
+      <span class="post-author">{content.data.author}</span>
+      <br>
+      <span class="post-time">{formattedDate}</span>
+    </div>
+  </a>
+</li>
