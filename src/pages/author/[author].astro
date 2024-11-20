@@ -16,9 +16,13 @@ const { authorData } = Astro.props;
 const allPosts = await getCollection('blog');
 const filteredPosts = allPosts.filter((post) => post.data.author.includes(author));
 ---
-
+<style>
+  .shortMessage{
+    font-weight: bold;
+  }
+</style>
 <BaseLayout pageTitle={authorData.name}>
-  <p>{authorData.shortMessage}</p>
-  <p>{authorData.message}</p>
+  <p class="shortMessage">{authorData.shortMessage}</p>
+  <p class="message">{authorData.message}</p>
   {filteredPosts.map((content) => <BlogPost content={content} />)}
 </BaseLayout>

@@ -2,6 +2,7 @@
 import BaseLayout from "./BaseLayout.astro";
 import "../styles/markdown.css";
 import { Image } from "astro:assets";
+import { getCollection } from "astro:content";
 const { entry } = Astro.props;
 const data = entry.data;
 const formattedDate = entry.data.pubDate.toLocaleString("ja-JP", {
@@ -10,14 +11,26 @@ const formattedDate = entry.data.pubDate.toLocaleString("ja-JP", {
   day: "2-digit",
   timeZone: "Asia/Tokyo",
 });
+const authors = await getCollection("author");
+const author = authors.filter((author) => author.id === data.author);
 ---
+<style>
+  #author a{
+    color: gray;
+    text-decoration: none;
+    font-weight: bold;
+  }
+  #author a:hover{
+    color: black;
+  }
 
+</style>
 <BaseLayout pageTitle={data.title}>
+  <Image src={data.thumbnail.url} width="1080" alt={data.thumbnail.alt} />
   <p>投稿日:{formattedDate}</p>
   {data.lastDate && <p>最終投稿日: {data.lastDate.toString().slice(0, 10)}</p>}
   <p style="color: rgb(97, 97, 97);"><em>{data.description}</em></p>
-  <p>著者: {data.author}</p>
-  <Image src={data.thumbnail.url} width="1080" alt={data.thumbnail.alt} />
+  <p id="author"><a href={`/author/${author[0].id}`}>{author[0].data.name}</a></p>
   <ul class="tags">
     {
       data.tags.map((tag) => (
@@ -27,7 +40,7 @@ const formattedDate = entry.data.pubDate.toLocaleString("ja-JP", {
       ))
     }
   </ul>
-  {data.map && <div class="map" set:html={data.map} />}
+  {data.map && <div id="map" set:html={data.map} />}
   <slot />
   <script>
     import "../scripts/markdown.js";
