@@ -59,7 +59,7 @@ h1 {
   display: block;
   text-align: center;
   padding: 10px 0;
-  margin: 0 10pxa;
+  margin: 0 10px;
   text-decoration: none;
   font-size: 1.2rem;
   font-weight: bold;
@@ -68,9 +68,24 @@ h1 {
 #toTop {
   color: black;
   font-size: 2rem;
-  margin: 0 15rem 0 5rem;
+  margin: 0 10rem 0 10rem;
 }
 
+@media (max-width: 990px) {
+  .nav-links {
+    left: 0; /* スマホでは左寄せ */
+  }
+
+  .nav-links a {
+    font-size: 1rem; /* リンクの文字サイズを小さく */
+    margin: 0 5px;
+  }
+
+  #toTop {
+    font-size: 1.5rem; /* ヘッダーの文字サイズを調整 */
+    margin: 0 5rem 0 5rem; /* マージンを調整 */
+  }
+}
 /* ブログ一覧のスタイル */
 
 #posts{
@@ -131,7 +146,7 @@ img {
   height: auto;
 }
 
-@media screen and (min-width: 636px) {
+@media screen and (min-width: 730px) {
   .nav-links {
     margin-left: 5em;
     display: block;
