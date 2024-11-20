@@ -12,7 +12,7 @@ const formattedDate = content.data.pubDate.toLocaleString("ja-JP", {
 ---
 
 <li>
-  <a href={content.slug}>
+  <a href={`/blog/${content.slug}`}>
     <Image src={content.data.thumbnail.url} alt={content.data.thumbnail.alt} />
     <div class="post-detail">
       <h2>{content.data.title}</h2>
