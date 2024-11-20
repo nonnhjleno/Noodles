@@ -1,0 +1,5 @@
+{
+  "$schema": "../../../.astro/collections/authors.schema.json",
+  "name": "荒井 血液之波",
+  "shortMessage": "新古今ラーメン集編纂者"
+}

@@ -1,0 +1,5 @@
+{
+  "$schema": "../../../.astro/collections/authors.schema.json",
+  "name": "細野 乱祭",
+  "shortMessage": "流しラーメンの第一人者"
+}

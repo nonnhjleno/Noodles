@@ -1,0 +1,5 @@
+{
+  "$schema": "../../../.astro/collections/authors.schema.json",
+  "name": "Noodles",
+  "shortMessage": "全員参戦！！"
+}

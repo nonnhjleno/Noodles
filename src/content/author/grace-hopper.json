@@ -1,6 +1,0 @@
-{
-  "$schema": "../../../.astro/collections/authors.schema.json",
-  "name": "Grace Hopper",
-  "shortMessage": "COBOLを作ったおじいちゃん",
-  "message": ""
-}
