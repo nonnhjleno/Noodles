@@ -8,16 +8,48 @@ const formattedDate = content.data.pubDate.toLocaleString("ja-JP", {
   day: "2-digit",
   timeZone: "Asia/Tokyo",
 });
-
 ---
 
-<li>
+<style>
+  .post {
+
+    margin: 20px auto;
+  }
+
+  .post a {
+    display: flex;
+    color: black;
+    text-decoration: none;
+  }
+
+  .post img {
+    width: 70%;
+    min-width: 220px;
+  }
+
+  .post-detail {
+    width: 100%;
+    margin-left: 1rem;
+  }
+  @media (max-width: 768px) {
+		.post img{
+      width: 30%;
+    }
+
+		.post-detail h2 {
+			font-size: 1.2rem; /* スマホ向けのフォントサイズ */
+		}
+	}
+
+</style>
+
+<li class="post">
   <a href={`/blog/${content.slug}`}>
     <Image src={content.data.thumbnail.url} alt={content.data.thumbnail.alt} />
     <div class="post-detail">
       <h2>{content.data.title}</h2>
       <span class="post-author">{content.data.author}</span>
-      <br>
+      <br />
       <span class="post-time">{formattedDate}</span>
     </div>
   </a>

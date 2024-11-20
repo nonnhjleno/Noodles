@@ -6,26 +6,32 @@ import BaseLayout from "../../layouts/BaseLayout.astro";
 import BlogPost from "../../components/BlogPost.astro";
 import { getCollection } from "astro:content";
 
-const allPosts = await getCollection('blog');
+const allPosts = await getCollection("blog");
 
 const publishedPosts = allPosts.filter((content) => content.data.isPublished);
 
 const sortedPosts = publishedPosts.sort((a, b) => {
-  const aDate = new Date(a.data.pubDate);
-  const bDate = new Date(b.data.pubDate);
-  return bDate.getTime() - aDate.getTime();
+	const aDate = new Date(a.data.pubDate);
+	const bDate = new Date(b.data.pubDate);
+	return bDate.getTime() - aDate.getTime();
 });
 
 const pageTitle = "記事一覧";
-
 ---
 
+<style>
+	#posts {
+		list-style: none;
+	}
+
+	@media (max-width: 768px) {
+		#posts{
+			padding: 0;
+		}
+	}
+</style>
 <BaseLayout pageTitle={pageTitle}>
 	<ul id="posts">
-		{
-			sortedPosts.map((content) => (
-				<BlogPost content={content}/>
-			))
-		}
+		{sortedPosts.map((content) => <BlogPost content={content} />)}
 	</ul>
 </BaseLayout>

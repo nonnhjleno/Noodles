@@ -86,29 +86,6 @@ h1 {
     margin: 0 5rem 0 5rem; /* マージンを調整 */
   }
 }
-/* ブログ一覧のスタイル */
-
-#posts{
-  list-style: none;
-}
-
-#posts li{
-  margin: 20px auto;
-}
-
-#posts a{
-  display: flex;
-  color: black;
-  text-decoration: none;
-}
-
-#posts img{
-  width: 50%;
-}
-
-.post-detail{
-  margin-left: 1rem;
-}
 
 /* フッターのスタイル */
 
