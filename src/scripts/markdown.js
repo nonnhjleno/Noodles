@@ -1,4 +1,8 @@
-document.querySelectorAll('.map')[0].children[0].width = document.querySelectorAll('.map') ? "100%": "";
+if (document.querySelector("#map")) {
+  if (document.querySelector("#map").querySelector("iframe")) {
+    document.querySelector("#map").querySelector("iframe").style.width = "100%";
+  }
+}
 
 const blockquotes = document.querySelectorAll("blockquote");
 blockquotes.forEach((blockquote) => {
@@ -40,7 +44,7 @@ paragraphs.forEach((paragraph) => {
   }
 
   const links = paragraph.querySelectorAll("a");
-  if(links[0] && links[0].href === links[0].innerText) {
+  if (links[0] && links[0].href === links[0].innerText) {
     console.log(links[0]);
   }
 
