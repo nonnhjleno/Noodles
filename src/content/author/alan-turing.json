@@ -1,0 +1,5 @@
+{
+  "$schema": "../../../.astro/collections/authors.schema.json",
+  "name": "Alan Turing",
+  "shortMessage": "パソコンを思いついた人"
+}

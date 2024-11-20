@@ -1,0 +1,24 @@
+---
+import BlogPost from "../../components/BlogPost.astro";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import "../../styles/global.css";
+import { getCollection } from "astro:content";
+export async function getStaticPaths() {
+  const authors = await getCollection("author");
+  return authors.map((author) => ({
+    params: { author: author.id },
+    props: { authorData: author.data },
+  }));
+}
+const { author } = Astro.params;
+const { authorData } = Astro.props;
+
+const allPosts = await getCollection('blog');
+const filteredPosts = allPosts.filter((post) => post.data.author.includes(author));
+---
+
+<BaseLayout pageTitle={authorData.name}>
+  <p>{authorData.shortMessage}</p>
+  <p>{authorData.message}</p>
+  {filteredPosts.map((content) => <BlogPost content={content} />)}
+</BaseLayout>

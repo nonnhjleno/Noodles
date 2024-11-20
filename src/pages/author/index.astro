@@ -1,0 +1,17 @@
+---
+import Layout from '../../layouts/BaseLayout.astro';
+import { getCollection } from "astro:content";
+
+const pageTitle = "著者一覧";
+
+const authors = await getCollection('author');
+
+---
+
+<Layout pageTitle={pageTitle}>
+  <ul>
+    {authors.map((author) => (
+      <li><a href={`/author/${author.id}`}>{author.data.name}</a></li>
+    ))}
+  </ul>
+</Layout>
