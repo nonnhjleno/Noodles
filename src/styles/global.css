@@ -13,6 +13,8 @@ main {
 }
 
 * {
+  margin: 0;
+  padding: 0;
   box-sizing: border-box;
 }
 
@@ -29,62 +31,6 @@ main {
 h1 {
   margin: 1rem 0;
   font-size: 1.8rem;
-}
-
-/* ナビゲーションのスタイル */
-
-.hamburger {
-  padding-right: 20px;
-  cursor: pointer;
-}
-
-.hamburger .line {
-  display: block;
-  width: 40px;
-  height: 5px;
-  margin-bottom: 10px;
-  background-color: #ff9776;
-}
-
-.nav-links {
-  width: 100%;
-  top: 5rem;
-  left: 48px;
-  background-color: #ff9776;
-  display: none;
-  margin: 0;
-}
-
-.nav-links a {
-  display: block;
-  text-align: center;
-  padding: 10px 0;
-  margin: 0 10px;
-  text-decoration: none;
-  font-size: 1.2rem;
-  font-weight: bold;
-}
-
-#toTop {
-  color: black;
-  font-size: 2rem;
-  margin: 0 10rem 0 10rem;
-}
-
-@media (max-width: 990px) {
-  .nav-links {
-    left: 0; /* スマホでは左寄せ */
-  }
-
-  .nav-links a {
-    font-size: 1rem; /* リンクの文字サイズを小さく */
-    margin: 0 5px;
-  }
-
-  #toTop {
-    font-size: 1.5rem; /* ヘッダーの文字サイズを調整 */
-    margin: 0 5rem 0 5rem; /* マージンを調整 */
-  }
 }
 
 /* フッターのスタイル */
@@ -121,24 +67,4 @@ footer>div {
 img {
   width: 100%;
   height: auto;
-}
-
-@media screen and (min-width: 730px) {
-  .nav-links {
-    margin-left: 5em;
-    display: block;
-    position: static;
-    width: auto;
-    background: none;
-  }
-
-  .nav-links a {
-    display: inline-block;
-    padding: 15px 20px;
-  }
-
-  .hamburger {
-    display: none;
-  }
-
 }
