@@ -34,6 +34,19 @@ const author = authors.filter((author) => author.id === data.author);
   #author a:hover {
     color: black;
   }
+  .tags{
+    width: 100%;
+    display: flex;
+  }
+  .tag{
+    list-style: none;
+    margin: 0 5px;
+  }
+  .tag a{
+    font-weight: bold;
+    color: rgb(24, 166, 255);
+    text-decoration: none;
+  }
   @media (max-width: 710px) {
     #blogContainer {
       width: 100%;
@@ -57,7 +70,7 @@ const author = authors.filter((author) => author.id === data.author);
       {
         data.tags.map((tag) => (
           <li class="tag">
-            <a href={`/tags/${tag}`}>{tag}</a>
+            <a href={`/tags/${tag}`}>#{tag}</a>
           </li>
         ))
       }
