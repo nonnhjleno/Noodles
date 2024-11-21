@@ -26,6 +26,9 @@ const author = authors.filter((author) => author.id === data.author);
   #blogContainer h1 {
     font-size: 35px;
   }
+  #author {
+    margin-top: 20px;
+  }
   #author a {
     color: gray;
     text-decoration: none;
@@ -33,6 +36,9 @@ const author = authors.filter((author) => author.id === data.author);
   }
   #author a:hover {
     color: black;
+  }
+  #description{
+    margin: 30px 0;
   }
   .tags{
     width: 100%;
@@ -62,10 +68,10 @@ const author = authors.filter((author) => author.id === data.author);
     </div>
     <p>{formattedDate}</p>
     {data.lastDate && <p>更新: {data.lastDate.toString().slice(0, 10)}</p>}
-    <p style="color: rgb(97, 97, 97);"><em>{data.description}</em></p>
     <p id="author">
       <a href={`/author/${author[0].id}`}>{author[0].data.name}</a>
     </p>
+    <p id="description"><em>{data.description}</em></p>
     <ul class="tags">
       {
         data.tags.map((tag) => (
