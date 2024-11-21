@@ -21,10 +21,14 @@ const filteredPosts = allPosts.filter((post) =>
 
 <style>
   .shortMessage {
+    margin: 0;
     font-weight: bold;
+    font-size: 18px;
+    color: rgb(106, 106, 106);
   }
 </style>
 <BaseLayout pageTitle={authorData.name}>
+  <h1>{authorData.name}</h1>
   <p class="shortMessage">{authorData.shortMessage}</p>
   <p class="message">{authorData.message}</p>
   <BlogList posts={filteredPosts}/>
