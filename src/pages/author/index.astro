@@ -12,57 +12,91 @@ const sortedAuthors = [
 ---
 
 <style>
-  #authors {
-    list-style-type: none;
+  ul#authors {
+    list-style: none;
+    padding: 0;
+    margin: 0 auto;
     display: flex;
     flex-wrap: wrap;
+    justify-content: center;
+    max-width: 1200px;
   }
-  #authors li {
-    border: 0.5px solid rgb(148, 112, 255);
-    border-radius: 30px;
-    box-shadow: 0 0.5px 3px rgba(0, 0, 0, 0.3);
-    margin: 20px 10px;
-    padding: 20px;
-    width: 15rem;
-    height: 130px;
-    min-width: 250px;
-  }
-  #authors li a {
-    color: black;
+
+  ul#authors a {
     text-decoration: none;
+    display: inline;
   }
-  #authors h2 {
-    margin: 0;
+
+  ul#authors li {
+    background: #fff;
+    border: 1px solid #000000;
+    border-radius: 8px;
+    width: 280px;
+    text-align: center;
+    transition: background-color 0.3s;
+    box-sizing: border-box;
+    margin: 8px;
+    padding: 10px;
   }
-  #authors p {
-    margin: 0;
-    font-size: 12px;
+
+  ul#authors li h2 {
+    margin: 10px 0 0;
+    font-size: 1.8em;
+    color: #444;
+  }
+
+  ul#authors li p {
+    font-size: 0.8em;
     font-weight: bold;
-    color: rgb(106, 106, 106);
+    color: #666;
+    margin: 0;
   }
-  @media (max-width: 800px) {
-    #authors {
-      display: block;
+
+  @media (max-width: 1024px) {
+    ul#authors a {
+    text-decoration: none;
+    display: block;
+  }
+    ul#authors li {
+      width: 250px; /* 幅を調整 */
+      padding: 10px 15px;
     }
-    #authors li {
-      margin: 0 auto 60px auto;
+
+    ul#authors li h2 {
+      font-size: 1.3em;
+    }
+
+    ul#authors li p {
+      font-size: 0.9em;
+    }
+  }
+
+  @media (max-width: 768px) {
+    ul#authors {
+      align-items: center;
+    }
+
+    ul#authors a {
+      margin: 10px;
+    }
+
+    ul#authors li {
+      max-width: 350px; /* 最大幅を設定 */
     }
   }
 </style>
 <Layout pageTitle={pageTitle}>
-  <div id="authorContainer">
-    <h1>{pageTitle}</h1>
-    <ul id="authors">
-      {
-        sortedAuthors.map((author) => (
-          <li>
-            <a href={`/author/${author.id}`}>
-              <p>{author.data.shortMessage}</p>
-              <h2>{author.data.name}</h2>
-            </a>
-          </li>
-        ))
-      }
-    </ul>
-  </div>
+  <h1>{pageTitle}</h1>
+  <ul id="authors">
+    {
+      sortedAuthors.map((author) => (
+        <li>
+          <a href={`/author/${author.id}`}>
+            <p>{author.data.shortMessage}</p>
+            <h2>{author.data.name}</h2>
+          </a>
+        </li>
+      ))
+    }
+  </ul>
 </Layout>
