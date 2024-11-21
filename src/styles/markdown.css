@@ -52,6 +52,11 @@ h6 {
   background-color: #ffdbdb;
 }
 
+ul, ol{
+  width: 90%;
+  margin: 0 auto;
+}
+
 pre {
   margin: 1em 0;
   padding: 1em;
