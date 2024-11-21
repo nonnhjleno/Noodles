@@ -82,7 +82,9 @@ const author = authors.filter((author) => author.id === data.author);
       }
     </ul>
     {data.map && <div id="map" set:html={data.map} />}
-    <slot />
+    <div id="markdown">
+      <slot />
+    </div>
     <script>
       import "../scripts/markdown.js";
     </script>

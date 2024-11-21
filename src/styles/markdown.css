@@ -52,7 +52,8 @@ h6 {
   background-color: #ffdbdb;
 }
 
-ul, ol{
+#markdown ul,
+#markdown ol {
   width: 90%;
   margin: 0 auto;
 }
@@ -76,7 +77,8 @@ pre code span {
   font-family: "Source Code Pro", monospace;
   font-optical-sizing: auto;
   font-weight: 600;
-  font-style: normal;}
+  font-style: normal;
+}
 
 code {
   padding: 0.3rem;
