@@ -9,6 +9,13 @@ const { posts } = Astro.props;
     display: flex;
     flex-wrap: wrap;
   }
+  @media (max-width: 710px) {
+    ul{
+      display: block;
+      padding: 0;
+    }
+  }
+
 </style>
 <ul id="posts">
   {posts.map((content) => <BlogPost content={content} />)}

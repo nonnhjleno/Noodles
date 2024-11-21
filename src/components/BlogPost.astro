@@ -36,20 +36,33 @@ const author = authors.filter((author) => author.id === content.data.author);
     width: 100%;
   }
 
-  .post-detail h2{
+  .post-detail h2 {
     margin: 0;
     font-size: large;
     font-weight: bold;
   }
-  @media (max-width: 768px) {
+  @media (max-width: 710px) {
+    .post {
+      display: flex;
+      width: 100%;
+      padding: 0;
+    }
+    .post-detail {
+      margin-left: 10px;
+    }
+    .post-detail h2{
+      font-size: 15px;
+    }
+  }
+  /* @media (max-width: 768px) {
     .post img {
       width: 30%;
     }
 
     .post-detail h2 {
-      font-size: 1.2rem; /* スマホ向けのフォントサイズ */
+      font-size: 1.2rem;
     }
-  }
+  } */
 </style>
 
 <li class="post">
@@ -58,7 +71,9 @@ const author = authors.filter((author) => author.id === content.data.author);
   </a>
   <div class="post-detail">
     <a href={`/blog/${content.slug}`}><h2>{content.data.title}</h2></a>
-    <span class="post-author"><a href={`/author/${author[0].id}`}>{author[0].data.name}</a></span>
+    <span class="post-author"
+      ><a href={`/author/${author[0].id}`}>{author[0].data.name}</a></span
+    >
     <br />
     <span class="post-time">{formattedDate}</span>
   </div>
