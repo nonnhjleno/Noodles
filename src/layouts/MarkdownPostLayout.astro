@@ -14,35 +14,51 @@ const formattedDate = entry.data.pubDate.toLocaleString("ja-JP", {
 const authors = await getCollection("author");
 const author = authors.filter((author) => author.id === data.author);
 ---
+
 <style>
-  #author a{
+  #blogContainer{
+    width: 60ch;
+    margin: 0 auto;
+  }
+  #blogContainer h1{
+    font-size: 35px;
+  }
+  #author a {
     color: gray;
     text-decoration: none;
     font-weight: bold;
   }
-  #author a:hover{
+  #author a:hover {
     color: black;
   }
-
 </style>
 <BaseLayout pageTitle={data.title}>
-  <Image src={data.thumbnail.url} width="1080" alt={data.thumbnail.alt} />
-  <p>投稿日:{formattedDate}</p>
-  {data.lastDate && <p>最終投稿日: {data.lastDate.toString().slice(0, 10)}</p>}
-  <p style="color: rgb(97, 97, 97);"><em>{data.description}</em></p>
-  <p id="author"><a href={`/author/${author[0].id}`}>{author[0].data.name}</a></p>
-  <ul class="tags">
+  <div id="blogContainer">
+    <h1>{data.title}</h1>
+    <Image src={data.thumbnail.url} width="1080" alt={data.thumbnail.alt} />
+    <p>{formattedDate}</p>
     {
-      data.tags.map((tag) => (
-        <li class="tag">
-          <a href={`/tags/${tag}`}>{tag}</a>
-        </li>
-      ))
+      data.lastDate && (
+        <p>更新: {data.lastDate.toString().slice(0, 10)}</p>
+      )
     }
-  </ul>
-  {data.map && <div id="map" set:html={data.map} />}
-  <slot />
-  <script>
-    import "../scripts/markdown.js";
-  </script>
+    <p style="color: rgb(97, 97, 97);"><em>{data.description}</em></p>
+    <p id="author">
+      <a href={`/author/${author[0].id}`}>{author[0].data.name}</a>
+    </p>
+    <ul class="tags">
+      {
+        data.tags.map((tag) => (
+          <li class="tag">
+            <a href={`/tags/${tag}`}>{tag}</a>
+          </li>
+        ))
+      }
+    </ul>
+    {data.map && <div id="map" set:html={data.map} />}
+    <slot />
+    <script>
+      import "../scripts/markdown.js";
+    </script>
+  </div>
 </BaseLayout>

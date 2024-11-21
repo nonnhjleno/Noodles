@@ -2,7 +2,7 @@
 import Layout from "../../layouts/BaseLayout.astro";
 import { getCollection } from "astro:content";
 
-const pageTitle = "著者一覧";
+const pageTitle = "ライター";
 
 const authors = await getCollection("author");
 const sortedAuthors = [
@@ -16,16 +16,16 @@ const sortedAuthors = [
     list-style-type: none;
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-between;
   }
   #authors li {
     border: 0.5px solid rgb(148, 112, 255);
     border-radius: 30px;
     box-shadow: 0 0.5px 3px rgba(0, 0, 0, 0.3);
-    margin-bottom: 60px;
+    margin: 20px 10px;
     padding: 20px;
-    width: 20rem;
-    min-width: 330px;
+    width: 15rem;
+    height: 130px;
+    min-width: 250px;
   }
   #authors li a {
     color: black;
@@ -36,6 +36,8 @@ const sortedAuthors = [
   }
   #authors p {
     margin: 0;
+    font-size: 12px;
+    font-weight: bold;
     color: rgb(106, 106, 106);
   }
   @media (max-width: 800px) {
@@ -48,16 +50,19 @@ const sortedAuthors = [
   }
 </style>
 <Layout pageTitle={pageTitle}>
-  <ul id="authors">
-    {
-      sortedAuthors.map((author) => (
-        <li>
-          <a href={`/author/${author.id}`}>
-            <h2>{author.data.name}</h2>
-            <p>{author.data.shortMessage}</p>
-          </a>
-        </li>
-      ))
-    }
-  </ul>
+  <div id="authorContainer">
+    <h1>{pageTitle}</h1>
+    <ul id="authors">
+      {
+        sortedAuthors.map((author) => (
+          <li>
+            <a href={`/author/${author.id}`}>
+              <p>{author.data.shortMessage}</p>
+              <h2>{author.data.name}</h2>
+            </a>
+          </li>
+        ))
+      }
+    </ul>
+  </div>
 </Layout>
