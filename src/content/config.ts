@@ -21,7 +21,7 @@ const author = defineCollection({
   type: 'data',
   schema: z.object({
     name: z.string(),
-    shortMessage: z.string().default('ラーメンで動くデューンバギーの擬人化'),
+    shortMessage: z.string().default('ラーメンで動くデューンバギー'),
     message: z.string().default('普通の人ならお茶を一口飲むところでラーメンのスープを飲んだ第一人者'),
     url: z.string().url().optional(),
   })
