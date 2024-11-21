@@ -1,0 +1,15 @@
+---
+import BlogPost from "./BlogPost.astro";
+
+const { posts } = Astro.props;
+---
+<style>
+  ul{
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+  }
+</style>
+<ul id="posts">
+  {posts.map((content) => <BlogPost content={content} />)}
+</ul>

@@ -1,16 +1,21 @@
 ---
-import BaseLayout from '../../layouts/BaseLayout.astro';
+import BaseLayout from "../../layouts/BaseLayout.astro";
 
 import BlogPost from "../../components/BlogPost.astro";
-import { getCollection } from 'astro:content';
+import { getCollection } from "astro:content";
+import BlogList from "../../components/BlogList.astro";
 
 export async function getStaticPaths() {
-  const allPosts = await getCollection('blog');
+  const allPosts = await getCollection("blog");
 
-  const uniqueTags = [...new Set(allPosts.map((post) => post.data.tags).flat())];
+  const uniqueTags = [
+    ...new Set(allPosts.map((post) => post.data.tags).flat()),
+  ];
 
   return uniqueTags.map((tag) => {
-    const filteredPosts = allPosts.filter((post) => post.data.tags.includes(tag));
+    const filteredPosts = allPosts.filter((post) =>
+      post.data.tags.includes(tag),
+    );
     return {
       params: { tag },
       props: { posts: filteredPosts },
@@ -24,7 +29,5 @@ const { posts } = Astro.props;
 
 <BaseLayout pageTitle={tag}>
   <p>{tag}のタグが付いた記事</p>
-  <ul id="posts">
-    {posts.map((content) => <BlogPost content={content} />)}
-  </ul>
+  <BlogList posts={posts}/>
 </BaseLayout>

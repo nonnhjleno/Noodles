@@ -5,6 +5,7 @@ import BaseLayout from "../../layouts/BaseLayout.astro";
 
 import BlogPost from "../../components/BlogPost.astro";
 import { getCollection } from "astro:content";
+import BlogList from "../../components/BlogList.astro";
 
 const allPosts = await getCollection("blog");
 
@@ -31,7 +32,6 @@ const pageTitle = "記事一覧";
 	}
 </style>
 <BaseLayout pageTitle={pageTitle}>
-	<ul id="posts">
-		{sortedPosts.map((content) => <BlogPost content={content} />)}
-	</ul>
+	<h1>{pageTitle}</h1>
+	<BlogList posts={sortedPosts}/>
 </BaseLayout>

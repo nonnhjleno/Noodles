@@ -1,5 +1,5 @@
 ---
-import BlogPost from "../../components/BlogPost.astro";
+import BlogList from "../../components/BlogList.astro";
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import "../../styles/global.css";
 import { getCollection } from "astro:content";
@@ -13,16 +13,19 @@ export async function getStaticPaths() {
 const { author } = Astro.params;
 const { authorData } = Astro.props;
 
-const allPosts = await getCollection('blog');
-const filteredPosts = allPosts.filter((post) => post.data.author.includes(author));
+const allPosts = await getCollection("blog");
+const filteredPosts = allPosts.filter((post) =>
+  post.data.author.includes(author),
+);
 ---
+
 <style>
-  .shortMessage{
+  .shortMessage {
     font-weight: bold;
   }
 </style>
 <BaseLayout pageTitle={authorData.name}>
   <p class="shortMessage">{authorData.shortMessage}</p>
   <p class="message">{authorData.message}</p>
-  {filteredPosts.map((content) => <BlogPost content={content} />)}
+  <BlogList posts={filteredPosts}/>
 </BaseLayout>
