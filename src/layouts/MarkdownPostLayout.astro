@@ -16,11 +16,14 @@ const author = authors.filter((author) => author.id === data.author);
 ---
 
 <style>
-  #blogContainer{
-    width: 60ch;
+  #blogContainer {
+    width: 70%;
     margin: 0 auto;
   }
-  #blogContainer h1{
+  #imageContainer {
+    width: 100%;
+  }
+  #blogContainer h1 {
     font-size: 35px;
   }
   #author a {
@@ -31,17 +34,21 @@ const author = authors.filter((author) => author.id === data.author);
   #author a:hover {
     color: black;
   }
+  @media (max-width: 710px) {
+    #blogContainer {
+      width: 100%;
+      margin: 0 auto;
+    }
+  }
 </style>
 <BaseLayout pageTitle={data.title}>
   <div id="blogContainer">
     <h1>{data.title}</h1>
-    <Image src={data.thumbnail.url} width="1080" alt={data.thumbnail.alt} />
+    <div id="imageContainer">
+      <Image src={data.thumbnail.url} width="1080" alt={data.thumbnail.alt} />
+    </div>
     <p>{formattedDate}</p>
-    {
-      data.lastDate && (
-        <p>更新: {data.lastDate.toString().slice(0, 10)}</p>
-      )
-    }
+    {data.lastDate && <p>更新: {data.lastDate.toString().slice(0, 10)}</p>}
     <p style="color: rgb(97, 97, 97);"><em>{data.description}</em></p>
     <p id="author">
       <a href={`/author/${author[0].id}`}>{author[0].data.name}</a>
