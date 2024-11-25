@@ -1,5 +1,6 @@
 {
   "$schema": "../../../.astro/collections/authors.schema.json",
   "name": "Noodles",
-  "shortMessage": "全員参戦！！"
+  "shortMessage": "でっかいラーメンが見た夢",
+  "message": "ラーメンの願い。ラーメンの音。"
 }
