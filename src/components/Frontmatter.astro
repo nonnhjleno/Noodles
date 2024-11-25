@@ -36,6 +36,7 @@ const author = authors.filter((author) => author.id === data.author);
     margin: 30px 0;
   }
   .tags {
+    margin: 20px 0;
     width: 100%;
     display: flex;
   }
@@ -50,9 +51,6 @@ const author = authors.filter((author) => author.id === data.author);
   }
 </style>
 <h1>{data.title}</h1>
-<div id="imageContainer">
-  <Image src={data.thumbnail.url} width="1080" alt={data.thumbnail.alt} />
-</div>
 <p>{formattedDate}</p>
 {data.lastDate && <p>更新: {data.lastDate.toString().slice(0, 10)}</p>}
 <p id="author">
@@ -68,4 +66,7 @@ const author = authors.filter((author) => author.id === data.author);
     ))
   }
 </ul>
+<div id="imageContainer">
+  <Image src={data.thumbnail.url} width="1080" alt={data.thumbnail.alt} />
+</div>
 {data.map && <div id="map" set:html={data.map} />}
