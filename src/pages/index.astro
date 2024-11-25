@@ -1,17 +1,52 @@
 ---
 import "../styles/global.css";
 
-import BaseLayout from '../layouts/BaseLayout.astro';
+import BaseLayout from "../layouts/BaseLayout.astro";
 
-const pageTitle ="Noodlesのブログ"
+const pageTitle = "Noodles";
 ---
 
+<style>
+  #aboutTop {
+    max-width: 700px;
+    margin: 0 auto;
+  }
+
+  #aboutTop #description {
+    margin: 40px 0;
+  }
+
+  .blog-link {
+    margin: 30px auto;
+    width: fit-content;
+  }
+
+  .blog-link a {
+    padding: 20px;
+    background-color: #1e88e5;
+    border-radius: 10px;
+    color: white;
+    text-decoration: none;
+  }
+
+</style>
 <BaseLayout pageTitle={pageTitle}>
   <div class="about">
-    <h1>{pageTitle}</h1>
-    <h2>活動内容</h2>
-    <div>
-      ここに活動内容などを書く
+    <div id="aboutTop">
+      <h1>{pageTitle}</h1>
+      <h2>麵ブログ</h2>
+      <div id="description">
+        <p>
+          Noodlesは、月に2回サークル活動として、メンバー同士で麺屋に行って食事を行います。その活動の様子をブログやInstagram、X(旧:Twitter)にアップしています。
+        </p>
+        <p>
+          人数が多い場合にはお店への迷惑になる可能性があるため、二手に分かれて活動をするなどの措置をとっています。
+        </p>
+        <p>
+          また、ラーメンフェスや学祭での麵屋の出店も行っています。長期休暇期間には流しそうめんや鍋次郎、合宿を行います。
+        </p>
+      </div>
+      <p class="blog-link"><a href="/blog">Noodlesのブログを読む</a></p>
     </div>
   </div>
 </BaseLayout>

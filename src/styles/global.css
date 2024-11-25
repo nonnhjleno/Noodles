@@ -18,16 +18,6 @@ main {
   box-sizing: border-box;
 }
 
-.about div{
-  width: 90%;
-  margin: 0 auto;
-  height: 600px;
-  background-color: rgb(230, 230, 230);
-  border-radius: 50px;
-  text-align: center;
-  padding: 100px 0;
-}
-
 h1 {
   margin: 1rem 0;
   font-size: 1.8rem;
