@@ -1,0 +1,6 @@
+{
+  "$schema": "../../../.astro/collections/authors.schema.json",
+  "name": "Joey",
+  "shortMessage": "笑い麺"
+  
+}
