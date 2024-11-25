@@ -1,57 +1,16 @@
 ---
 import BaseLayout from "./BaseLayout.astro";
 import "../styles/markdown.css";
-import { Image } from "astro:assets";
-import { getCollection } from "astro:content";
+import Frontmatter from "../components/Frontmatter.astro";
 const { entry } = Astro.props;
 const data = entry.data;
-const formattedDate = entry.data.pubDate.toLocaleString("ja-JP", {
-  year: "numeric",
-  month: "2-digit",
-  day: "2-digit",
-  timeZone: "Asia/Tokyo",
-});
-const authors = await getCollection("author");
-const author = authors.filter((author) => author.id === data.author);
+
 ---
 
 <style>
   #blogContainer {
     width: 70%;
     margin: 0 auto;
-  }
-  #imageContainer {
-    width: 100%;
-  }
-  #blogContainer h1 {
-    font-size: 35px;
-  }
-  #author {
-    margin-top: 20px;
-  }
-  #author a {
-    color: gray;
-    text-decoration: none;
-    font-weight: bold;
-  }
-  #author a:hover {
-    color: black;
-  }
-  #description{
-    margin: 30px 0;
-  }
-  .tags{
-    width: 100%;
-    display: flex;
-  }
-  .tag{
-    list-style: none;
-    margin: 0 5px;
-  }
-  .tag a{
-    font-weight: bold;
-    color: rgb(24, 166, 255);
-    text-decoration: none;
   }
   @media (max-width: 710px) {
     #blogContainer {
@@ -62,26 +21,7 @@ const author = authors.filter((author) => author.id === data.author);
 </style>
 <BaseLayout pageTitle={data.title}>
   <div id="blogContainer">
-    <h1>{data.title}</h1>
-    <div id="imageContainer">
-      <Image src={data.thumbnail.url} width="1080" alt={data.thumbnail.alt} />
-    </div>
-    <p>{formattedDate}</p>
-    {data.lastDate && <p>更新: {data.lastDate.toString().slice(0, 10)}</p>}
-    <p id="author">
-      <a href={`/author/${author[0].id}`}>{author[0].data.name}</a>
-    </p>
-    <p id="description"><em>{data.description}</em></p>
-    <ul class="tags">
-      {
-        data.tags.map((tag) => (
-          <li class="tag">
-            <a href={`/tags/${tag}`}>#{tag}</a>
-          </li>
-        ))
-      }
-    </ul>
-    {data.map && <div id="map" set:html={data.map} />}
+    <Frontmatter data={data}/>
     <div id="markdown">
       <slot />
     </div>
