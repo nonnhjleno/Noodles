@@ -7,11 +7,11 @@ import BlogPost from "../../components/BlogPost.astro";
 import { getCollection } from "astro:content";
 import BlogList from "../../components/BlogList.astro";
 
-const allPosts = await getCollection("blog");
+const allPosts = await getCollection('blog', ({ data }) => {
+  return data.isPublished !== false;
+});
 
-const publishedPosts = allPosts.filter((content) => content.data.isPublished);
-
-const sortedPosts = publishedPosts.sort((a, b) => {
+const sortedPosts = allPosts.sort((a, b) => {
 	const aDate = new Date(a.data.pubDate);
 	const bDate = new Date(b.data.pubDate);
 	return bDate.getTime() - aDate.getTime();
