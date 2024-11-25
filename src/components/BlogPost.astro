@@ -9,8 +9,11 @@ const formattedDate = content.data.pubDate.toLocaleString("ja-JP", {
   day: "2-digit",
   timeZone: "Asia/Tokyo",
 });
-const authors = await getCollection("author");
-const author = authors.filter((author) => author.id === content.data.author);
+const authorsCollection = await getCollection("author");
+console.log(content.data.author)
+const authors = authorsCollection.filter((author) =>
+  content.data.author.includes(author.id)
+);
 ---
 
 <style>
@@ -50,7 +53,7 @@ const author = authors.filter((author) => author.id === content.data.author);
     .post-detail {
       margin-left: 10px;
     }
-    .post-detail h2{
+    .post-detail h2 {
       font-size: 15px;
     }
   }
@@ -71,9 +74,13 @@ const author = authors.filter((author) => author.id === content.data.author);
   </a>
   <div class="post-detail">
     <a href={`/blog/${content.slug}`}><h2>{content.data.title}</h2></a>
-    <span class="post-author"
-      ><a href={`/author/${author[0].id}`}>{author[0].data.name}</a></span
-    >
+    <span class="post-author">
+      {
+        authors.map((author) => (
+          <a href={`/author/${author.id}`}>{author.data.name}</a>
+        ))
+      }
+        </span>
     <br />
     <span class="post-time">{formattedDate}</span>
   </div>

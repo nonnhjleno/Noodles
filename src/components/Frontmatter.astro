@@ -3,15 +3,16 @@ import { Image } from "astro:assets";
 import { getCollection } from "astro:content";
 
 const { data } = Astro.props;
-console.log(data);
 const formattedDate = data.pubDate.toLocaleString("ja-JP", {
   year: "numeric",
   month: "2-digit",
   day: "2-digit",
   timeZone: "Asia/Tokyo",
 });
-const authors = await getCollection("author");
-const author = authors.filter((author) => author.id === data.author);
+const authorsCollection = await getCollection("author");
+const authors = authorsCollection.filter((author) =>
+  data.author.includes(author.id),
+);
 ---
 
 <style>
@@ -21,15 +22,17 @@ const author = authors.filter((author) => author.id === data.author);
   #blogContainer h1 {
     font-size: 35px;
   }
-  #author {
+  #authors {
     margin-top: 20px;
   }
-  #author a {
+  .author{
+    font-size: 20px;
     color: gray;
     text-decoration: none;
     font-weight: bold;
+    margin-right: 20px; 
   }
-  #author a:hover {
+  .author:hover {
     color: black;
   }
   #description {
@@ -53,8 +56,12 @@ const author = authors.filter((author) => author.id === data.author);
 <h1>{data.title}</h1>
 <p>{formattedDate}</p>
 {data.lastDate && <p>更新: {data.lastDate.toString().slice(0, 10)}</p>}
-<p id="author">
-  <a href={`/author/${author[0].id}`}>{author[0].data.name}</a>
+<p id="authors">
+  {
+    authors.map((author) => (
+      <a class="author" href={`/author/${author.id}`}>{author.data.name}</a>
+    ))
+  }
 </p>
 <p id="description"><em>{data.description}</em></p>
 <ul class="tags">
