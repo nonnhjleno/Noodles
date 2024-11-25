@@ -28,15 +28,24 @@ const sortedAuthors = [
   }
 
   ul#authors li {
+    display: inline;
     background: #fff;
     border: 1px solid #000000;
     border-radius: 8px;
     width: 280px;
     text-align: center;
-    transition: background-color 0.3s;
     box-sizing: border-box;
     margin: 8px;
     padding: 10px;
+  }
+
+  ul#authors li:hover{
+    background-color: #fbe9e7;
+  }
+
+  /* 空の要素を隠す */
+  ul#authors li.placeholder {
+    visibility: hidden;
   }
 
   ul#authors li h2 {
@@ -46,7 +55,7 @@ const sortedAuthors = [
   }
 
   ul#authors li p {
-    font-size: 0.8em;
+    font-size: 0.7em;
     font-weight: bold;
     color: #666;
     margin: 0;
@@ -54,11 +63,11 @@ const sortedAuthors = [
 
   @media (max-width: 1024px) {
     ul#authors a {
-    text-decoration: none;
-    display: block;
-  }
+      text-decoration: none;
+      display: block;
+    }
     ul#authors li {
-      width: 250px; /* 幅を調整 */
+      width: 250px;
       padding: 10px 15px;
     }
 
@@ -85,6 +94,7 @@ const sortedAuthors = [
     }
   }
 </style>
+
 <Layout pageTitle={pageTitle}>
   <h1>{pageTitle}</h1>
   <ul id="authors">
@@ -96,6 +106,12 @@ const sortedAuthors = [
             <h2>{author.data.name}</h2>
           </a>
         </li>
+      ))
+    }
+    {
+      // 空の要素を追加して最後の行を埋める
+      Array.from({ length: (3 - (sortedAuthors.length % 3)) % 3 }).map(() => (
+        <li class="placeholder" />
       ))
     }
   </ul>
