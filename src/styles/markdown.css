@@ -3,35 +3,41 @@
 }
 
 h1 {
-  margin: 2rem 0;
+  margin: 2.5rem 0;
   font-size: 2.5rem;
   border-bottom: 0.5px solid var(--border-bottom-color);
 }
 
 h2 {
-  margin: 2rem 0;
-  font-size: 1.8rem;
+  margin: 2.5rem 0;
+  font-size: 2.2rem;
   border-bottom: 0.5px solid var(--border-bottom-color);
 }
 
 h3 {
-  margin: 2rem 0;
-  font-size: 1.4rem;
+  margin: 2.5rem 0;
+  font-size: 1.8rem;
+  border-bottom: 0.5px solid var(--border-bottom-color);
 }
 
 h4 {
-  margin: 1rem 0;
+  margin: 1.5rem 0;
   font-size: 1.2rem;
 }
 
 h5 {
-  margin: 1rem 0;
+  margin: 1.5rem 0;
   font-size: 1.1rem;
 }
 
 h6 {
-  margin: 1rem 0;
+  margin: 1.5rem 0;
   font-size: 1.0rem;
+}
+
+p {
+  line-height: 30px;
+  margin: 15px 0;
 }
 
 .note {
