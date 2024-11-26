@@ -1,0 +1,51 @@
+---
+export const prerender = false;
+import "../../styles/global.css";
+import "../../styles/markdown.css";
+
+import BaseLayout from "../../layouts/BaseLayout.astro";
+
+const pageTitle = "記事のレイアウト確認用ページ";
+---
+
+<style>
+  #markdown {
+    width: 70%;
+    margin: 0 auto;
+  }
+
+  .button, input::file-selector-button {
+    padding: 20px;
+    margin-top: 30px;
+    background-color: #ff7043;
+    border-radius: 10px;
+    color: white;
+    text-decoration: none;
+    border: none;
+    cursor: pointer;
+  }
+</style>
+<BaseLayout pageTitle={pageTitle}>
+  <div class="blog_test">
+    <h1>{pageTitle}</h1>
+    <p>画像は表示されないよ！</p>
+    <form onsubmit="return false">
+      <label>
+        File(*.md):
+        <input
+          type="file"
+          name="markdown"
+          required
+          accept=".md"
+          id="fileInput"
+        />
+      </label>
+      <br>
+      <button type="button" id="readFile" class="button">ファイルを読み取る</button>
+    </form>
+    <div id="markdown"></div>
+  </div>
+  <script>
+    import "../../scripts/markdown.js";
+  </script>
+</BaseLayout>
