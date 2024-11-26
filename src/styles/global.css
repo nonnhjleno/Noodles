@@ -1,3 +1,24 @@
+:root{
+  --theme-background: #ff8a65;
+  --theme-strong:#ff7043;
+}
+
+.blog-link a{
+  background-color: var(--theme-strong);
+}
+
+header{
+  background-color: var(--theme-background);
+}
+
+.button, input::file-selector-button {
+  background-color: var(--theme-strong);
+}
+
+.nav {
+  background-color: var(--theme-background);
+}
+
 html {
   background-color: #fdfdfd;
   font-family: sans-serif;
